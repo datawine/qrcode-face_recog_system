@@ -4,6 +4,7 @@ import numpy as np
 from namelist_util import *
 import datetime
 from PIL import ImageFont, ImageDraw, Image
+import os
 
 # this program is derived from face_recognition/facerec_from_webcam_faster.py
 
@@ -22,7 +23,10 @@ def init():
             # stu id contains x is for test use
             continue
 
-        test_image = face_recognition.load_image_file("img/" + stu_id + ".jpg")
+        if os.path.exists("img/" + stu_id + ".jpg"):
+            test_image = face_recognition.load_image_file("img/" + stu_id + ".jpg")
+        elif os.path.exists("img/" + stu_id + ".jpeg"):
+            test_image = face_recognition.load_image_file("img/" + stu_id + ".jpeg")
         test_face_encoding =  face_recognition.face_encodings(test_image)[0]
         known_face_encodings.append(test_face_encoding)
         known_face_names.append(stu_id)
