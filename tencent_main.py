@@ -60,7 +60,7 @@ class FaceDetectionWidget(QtWidgets.QWidget):
                 QMessageBox.about(self, "Success", f"{candidate['PersonId']}-{candidate['PersonName']} 签到成功")
                 return candidate
             else:
-                QMessageBox.about(self, "Fail", "签到失败")
+                QMessageBox.about(self, "Fail", "无对应人脸")
                 return None
         except TypeError:
             QMessageBox(self, "Fail", "签到失败")
